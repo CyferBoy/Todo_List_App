@@ -2,6 +2,7 @@ package com.todoapp.ui.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -40,6 +41,7 @@ import com.todoapp.ui.theme.PriorityLow
 import com.todoapp.ui.theme.PriorityMedium
 import com.todoapp.ui.theme.TaskShape
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TaskItem(
     task: Task,

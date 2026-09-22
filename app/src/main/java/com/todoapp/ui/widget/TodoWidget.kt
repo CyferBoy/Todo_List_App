@@ -10,12 +10,15 @@ import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.CheckBox
 import androidx.glance.appwidget.GlanceAppWidget
+import androidx.glance.appwidget.provideContent
 import androidx.glance.appwidget.action.ActionCallback
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.action.ActionParameters
 import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.cornerRadius
 import androidx.glance.appwidget.updateAll
+import androidx.glance.background
+import androidx.glance.unit.ColorProvider
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Box
 import androidx.glance.layout.Column
@@ -68,7 +71,7 @@ private fun WidgetContent(tasks: List<Task>, total: Int, completed: Int, listNam
         modifier = GlanceModifier
             .fillMaxSize()
             .cornerRadius(16.dp)
-            .background(android.R.color.white)
+            .background(ColorProvider(androidx.compose.ui.graphics.Color.White))
             .padding(12.dp)
     ) {
         Column(modifier = GlanceModifier.fillMaxSize()) {

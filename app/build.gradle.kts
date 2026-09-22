@@ -94,9 +94,10 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     // Supabase
-    implementation("io.github.jan-tennert.supabase:gotrue-kt:2.6.1")
-    implementation("io.github.jan-tennert.supabase:postgrest-kt:2.6.1")
-    implementation("io.github.jan-tennert.supabase:realtime-kt:2.6.1")
+    implementation(platform("io.github.jan-tennert.supabase:bom:2.6.1"))
+    implementation("io.github.jan-tennert.supabase:gotrue-kt")
+    implementation("io.github.jan-tennert.supabase:postgrest-kt")
+    implementation("io.github.jan-tennert.supabase:realtime-kt")
 
     // Network
     implementation("io.ktor:ktor-client-okhttp:2.3.12")
