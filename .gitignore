@@ -1,0 +1,22 @@
+# Local config (secrets)
+.env.local
+.env
+
+# Gradle
+.gradle/
+build/
+app/build/
+local.properties
+*.keystore
+*.jks
+
+# Android Studio
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# OS
+.DS_Store
+Thumbs.db
