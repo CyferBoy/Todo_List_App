@@ -2,7 +2,6 @@ package com.todoapp.data.remote
 
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
-import io.github.jan.supabase.gotrue.GoTrue
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.realtime.Realtime
 
@@ -18,9 +17,8 @@ object SupabaseClientProvider {
                 supabaseUrl = SupabaseConfig.url,
                 supabaseKey = SupabaseConfig.anonKey
             ) {
-                install(io.github.jan.supabase.gotrue.GoTrue)
-                install(io.github.jan.supabase.postgrest.Postgrest)
-                install(io.github.jan.supabase.realtime.Realtime)
+                install(Postgrest)
+                install(Realtime)
             }
             client = newClient
             newClient
