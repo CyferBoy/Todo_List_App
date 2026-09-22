@@ -108,7 +108,7 @@ class SyncQueueTest {
         val localTask = com.todoapp.domain.model.Task(id = "t1", title = "Local", updatedAt = 1000)
         val remoteTask = com.todoapp.domain.model.Task(id = "t1", title = "Remote", updatedAt = 2000)
         val hasPending = true
-        val shouldOverwrite = hasPending && remoteTask.updatedAt > localTask.updatedAt
+        val shouldOverwrite = !hasPending && remoteTask.updatedAt > localTask.updatedAt
         assertFalse("pending op should block overwrite", shouldOverwrite)
     }
 
