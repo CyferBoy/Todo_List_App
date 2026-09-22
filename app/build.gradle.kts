@@ -79,9 +79,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
 
     // Room
-    implementation("androidx.room:room-runtime:2.8.4")
-    implementation("androidx.room:room-ktx:2.8.4")
-    ksp("androidx.room:room-compiler:2.8.4")
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
 
     // Glance (Widget)
     implementation("androidx.glance:glance-appwidget:1.1.1")
@@ -94,9 +94,9 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     // Supabase
-    implementation("io.github.jan-kestenberg.supabase:auth-kotlin:2.6.1")
-    implementation("io.github.jan-kestenberg.supabase:postgrest-kotlin:2.6.1")
-    implementation("io.github.jan-kestenberg.supabase:realtime-kotlin:2.6.1")
+    implementation("io.github.jan-tennert.supabase:gotrue-kt:2.6.1")
+    implementation("io.github.jan-tennert.supabase:postgrest-kt:2.6.1")
+    implementation("io.github.jan-tennert.supabase:realtime-kt:2.6.1")
 
     // Network
     implementation("io.ktor:ktor-client-okhttp:2.3.12")
@@ -110,7 +110,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
     testImplementation("io.mockk:mockk:1.13.13")
-    testImplementation("androidx.room:room-testing:2.8.4")
+    testImplementation("androidx.room:room-testing:2.6.1")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2024.12.01"))
