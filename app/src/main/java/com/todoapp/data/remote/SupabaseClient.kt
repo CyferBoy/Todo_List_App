@@ -15,7 +15,7 @@ object SupabaseClientProvider {
                 supabaseUrl = SupabaseConfig.url,
                 supabaseKey = SupabaseConfig.anonKey
             ) {
-                install(io.github.jan.supabase.auth.Auth)
+                install(io.github.jan.supabase.gotrue.GoTrue)
                 install(io.github.jan.supabase.postgrest.Postgrest)
                 install(io.github.jan.supabase.realtime.Realtime)
             }

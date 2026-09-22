@@ -54,7 +54,7 @@ class CalendarViewModel(application: Application) : AndroidViewModel(application
             val start = month.atDay(1)
             val end = month.atEndOfMonth()
             getTasksByDateRange(start, end).collect { tasks ->
-                val tasksByDate = tasks.groupBy { it.dueDate }
+                val tasksByDate = tasks.filter { it.dueDate != null }.groupBy { it.dueDate!! }
                 _uiState.value = _uiState.value.copy(
                     tasksForMonth = tasksByDate,
                     tasksForSelectedDate = tasksByDate[_uiState.value.selectedDate] ?: emptyList(),

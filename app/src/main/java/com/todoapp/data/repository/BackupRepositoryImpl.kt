@@ -2,6 +2,7 @@ package com.todoapp.data.repository
 
 import android.content.Context
 import android.net.Uri
+import androidx.room.withTransaction
 import com.todoapp.data.local.database.TodoDatabase
 import com.todoapp.data.remote.SupabaseAuthService
 import com.todoapp.domain.model.Category

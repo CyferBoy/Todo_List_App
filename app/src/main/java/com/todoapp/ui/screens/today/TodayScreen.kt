@@ -20,7 +20,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -218,15 +217,6 @@ fun TodayScreen(
         SnackbarHost(
             hostState = snackbarHostState,
             modifier = Modifier.align(Alignment.BottomCenter)
-        ) { data ->
-            Snackbar(
-                snackbarData = data,
-                action = {
-                    TextButton(onClick = { viewModel.undoDelete() }) {
-                        Text("UNDO")
-                    }
-                }
-            )
-        }
+        )
     }
 }

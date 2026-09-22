@@ -2,8 +2,8 @@ package com.todoapp.data.remote
 
 import android.content.Context
 import android.util.Log
-import io.github.jan.supabase.auth.auth
-import io.github.jan.supabase.auth.providers.builtin.Anonymous
+import io.github.jan.supabase.gotrue.gotrue
+import io.github.jan.supabase.gotrue.providers.builtin.Anonymous
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -19,7 +19,7 @@ object SupabaseAuthService {
                 val client = SupabaseClientProvider.getClient()
 
                 // Try to restore persisted session (SDK handles token storage)
-                val existing = client.auth.currentSessionOrNull()
+                val existing = client.gotrue.currentSessionOrNull()
 
                 if (existing != null) {
                     if (!existing.isExpired()) {
@@ -28,13 +28,13 @@ object SupabaseAuthService {
 
                     // Access token expired — attempt refresh
                     try {
-                        val refreshed = client.auth.refreshSession()
+                        val refreshed = client.gotrue.refreshSession()
                         Log.d(TAG, "Session refreshed successfully")
                         return@withContext refreshed.user?.id
                     } catch (e: Exception) {
                         // Refresh failed. The refresh token may itself be expired.
                         // Check if the session is still usable after refresh attempt.
-                        val retrySession = client.auth.currentSessionOrNull()
+                        val retrySession = client.gotrue.currentSessionOrNull()
                         if (retrySession != null && !retrySession.isExpired()) {
                             return@withContext retrySession.user?.id
                         }
@@ -47,8 +47,8 @@ object SupabaseAuthService {
                 }
 
                 // No session exists at all — create new anonymous session
-                client.auth.signIn(Anonymous)
-                val session = client.auth.currentSessionOrNull()
+                client.gotrue.signIn(Anonymous)
+                val session = client.gotrue.currentSessionOrNull()
                 session?.user?.id
             } catch (e: Exception) {
                 Log.e(TAG, "ensureSession failed", e)
@@ -60,13 +60,13 @@ object SupabaseAuthService {
     fun getCurrentUserId(context: Context): String? {
         if (!SupabaseConfig.isConfigured) return null
         val client = SupabaseClientProvider.getClientOrNull() ?: return null
-        val session = client.auth.currentSessionOrNull() ?: return null
+        val session = client.gotrue.currentSessionOrNull() ?: return null
         return if (!session.isExpired()) session.user?.id else null
     }
 
     fun signOut(context: Context) {
         try {
-            SupabaseClientProvider.getClientOrNull()?.auth?.signOut()
+            SupabaseClientProvider.getClientOrNull()?.gotrue?.signOut()
         } catch (_: Exception) {}
     }
 

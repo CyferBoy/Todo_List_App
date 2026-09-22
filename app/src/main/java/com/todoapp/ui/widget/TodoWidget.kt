@@ -11,13 +11,11 @@ import androidx.glance.action.clickable
 import androidx.glance.appwidget.CheckBox
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.action.ActionCallback
-import androidx.glance.appwidget.action.ActionParameters
-import androidx.glance.appwidget.action.actionParametersOf
 import androidx.glance.appwidget.action.actionRunCallback
+import androidx.glance.action.ActionParameters
+import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.cornerRadius
-import androidx.glance.appwidget.provideContent
 import androidx.glance.appwidget.updateAll
-import androidx.glance.background
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Box
 import androidx.glance.layout.Column
@@ -31,7 +29,6 @@ import androidx.glance.layout.width
 import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
-import androidx.glance.unit.ColorProvider
 import com.todoapp.MainActivity
 import com.todoapp.di.AppModule
 import com.todoapp.domain.model.Task
@@ -71,7 +68,7 @@ private fun WidgetContent(tasks: List<Task>, total: Int, completed: Int, listNam
         modifier = GlanceModifier
             .fillMaxSize()
             .cornerRadius(16.dp)
-            .background(day = ColorProvider(android.R.color.white), night = ColorProvider(android.R.color.black))
+            .background(android.R.color.white)
             .padding(12.dp)
     ) {
         Column(modifier = GlanceModifier.fillMaxSize()) {

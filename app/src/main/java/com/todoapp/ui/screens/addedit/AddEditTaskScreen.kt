@@ -21,6 +21,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -35,9 +36,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextButtonDefaults
 import androidx.compose.material3.TimePicker
-import androidx.compose.material3.TimePickerDialog
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDatePickerState
@@ -459,7 +458,7 @@ fun AddEditTaskScreen(
                         viewModel.deleteTask()
                         showDeleteConfirmation = false
                     },
-                    colors = TextButtonDefaults.textButtonColors(
+                    colors = ButtonDefaults.textButtonColors(
                         contentColor = MaterialTheme.colorScheme.error
                     )
                 ) {
@@ -506,7 +505,7 @@ fun AddEditTaskScreen(
             initialHour = uiState.dueTime?.hour ?: 12,
             initialMinute = uiState.dueTime?.minute ?: 0
         )
-        TimePickerDialog(
+        AlertDialog(
             onDismissRequest = { showDueTimePicker = false },
             confirmButton = {
                 TextButton(onClick = {
@@ -522,10 +521,9 @@ fun AddEditTaskScreen(
                 TextButton(onClick = { showDueTimePicker = false }) {
                     Text("Cancel")
                 }
-            }
-        ) {
-            TimePicker(state = timePickerState)
-        }
+            },
+            text = { TimePicker(state = timePickerState) }
+        )
     }
 
     if (showReminderDatePicker) {
@@ -560,7 +558,7 @@ fun AddEditTaskScreen(
             initialHour = uiState.reminderTime?.hour ?: 12,
             initialMinute = uiState.reminderTime?.minute ?: 0
         )
-        TimePickerDialog(
+        AlertDialog(
             onDismissRequest = { showReminderTimePicker = false },
             confirmButton = {
                 TextButton(onClick = {
@@ -576,10 +574,9 @@ fun AddEditTaskScreen(
                 TextButton(onClick = { showReminderTimePicker = false }) {
                     Text("Cancel")
                 }
-            }
-        ) {
-            TimePicker(state = timePickerState)
-        }
+            },
+            text = { TimePicker(state = timePickerState) }
+        )
     }
 
     if (showRecurrenceEndDatePicker) {
